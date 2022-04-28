@@ -1,0 +1,2 @@
+# Use https://github.com/jenkinsci/jnlp-agents/blob/994e06e18fa494ef6d7f70e97499542ebc8feef7/maven/jdk8/Dockerfile as base for now
+FROM jenkins/jnlp-agent-maven:windows-nanoserver AS jnlp
