@@ -14,34 +14,4 @@ parallel(
       agentLabels: 'windows',
     ])
   },
-  'maven-jdk11': {
-     buildDockerAndPublishImage('inbound-agent-maven:jdk11', [
-      mainBranch: principalBranch,
-      dockerfile: 'maven/jdk11/Dockerfile',
-    ])
-  },
-  'maven-jdk17': {
-     buildDockerAndPublishImage('inbound-agent-maven:jdk17', [
-      mainBranch: principalBranch,
-      dockerfile: 'maven/jdk17/Dockerfile',
-    ])
-  },
-  'node': {
-     buildDockerAndPublishImage('inbound-agent-node', [
-      mainBranch: principalBranch,
-      dockerfile: 'node/Dockerfile',
-    ])
-  },
-  'ruby': {
-     buildDockerAndPublishImage('inbound-agent-ruby', [
-      mainBranch: principalBranch,
-      dockerfile: 'ruby/Dockerfile',
-    ])
-  },
-  'updatecli': {
-    updatecli(action: 'diff')
-    if (env.BRANCH_IS_PRIMARY) {
-      updatecli(action: 'apply', cronTriggerExpression: '@weekly')
-    }
-  },
 )
