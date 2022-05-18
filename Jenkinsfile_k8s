@@ -4,6 +4,13 @@ def principalBranch = 'main'
 
 parallel(
   failFast: false,
+  'maven-jdk8': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk8', [
+      mainBranch: principalBranch,
+      dockerfile: 'maven/jdk8/Dockerfile',
+      useContainer: false,
+    ])
+  },
   'maven-jdk8-nanoserver': {
      buildDockerAndPublishImage('inbound-agent-maven-nanoserver:jdk8', [
       dockerfile: 'maven/jdk8/Dockerfile.nanoserver',
