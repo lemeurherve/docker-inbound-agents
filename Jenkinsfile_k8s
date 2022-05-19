@@ -12,7 +12,7 @@ parallel(
     ])
   },
   'maven-jdk8-nanoserver': {
-     buildDockerAndPublishImage('inbound-agent-maven-nanoserver:jdk8', [
+     buildDockerAndPublishImage('inbound-agent-maven:jdk8-nanoserver', [
       dockerfile: 'maven/jdk8/Dockerfile.nanoserver',
       mainBranch: principalBranch,
       agentLabels: 'windows',
