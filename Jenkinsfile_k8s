@@ -18,4 +18,12 @@ parallel(
       useContainer: false,
     ])
   },
+  'maven-jdk8-test': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk8-test', [
+      dockerfile: 'maven/jdk8/Dockerfile.test',
+      agentLabels: 'windows',
+      platform: 'windows/amd64',
+      useContainer: false,
+    ])
+  },
 )
