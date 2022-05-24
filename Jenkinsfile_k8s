@@ -1,7 +1,3 @@
-@Library('pipeline-library@pull/388/head') _
-
-def principalBranch = 'main'
-
 parallel(
   failFast: false,
   'maven-jdk8': {
@@ -18,12 +14,50 @@ parallel(
       useContainer: false,
     ])
   },
-  'maven-jdk8-test': {
-     buildDockerAndPublishImage('inbound-agent-maven:jdk8-test', [
-      dockerfile: 'maven/jdk8/Dockerfile.test',
+  'maven-jdk11': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk11', [
+      dockerfile: 'maven/jdk11/Dockerfile',
+      useContainer: false,
+    ])
+  },
+  'maven-jdk11-nanoserver': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk11-nanoserver', [
+      dockerfile: 'maven/jdk11/Dockerfile.nanoserver',
       agentLabels: 'windows',
       platform: 'windows/amd64',
       useContainer: false,
     ])
+  },
+  'maven-jdk11-windowsservercore-1809': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk11-windowsservercore-1809', [
+      dockerfile: 'maven/jdk11/Dockerfile.windowsservercore-1809',
+      agentLabels: 'windows',
+      platform: 'windows/amd64',
+      useContainer: false,
+    ])
+  },
+  'maven-jdk17': {
+     buildDockerAndPublishImage('inbound-agent-maven:jdk17', [
+      dockerfile: 'maven/jdk17/Dockerfile',
+      useContainer: false,
+    ])
+  },
+  'node': {
+     buildDockerAndPublishImage('inbound-agent-node', [
+      dockerfile: 'node/Dockerfile',
+      useContainer: false,
+    ])
+  },
+  'ruby': {
+     buildDockerAndPublishImage('inbound-agent-ruby', [
+      dockerfile: 'ruby/Dockerfile',
+      useContainer: false,
+    ])
+  },
+  'updatecli': {
+    updatecli(action: 'diff')
+    if (env.BRANCH_IS_PRIMARY) {
+      updatecli(action: 'apply', cronTriggerExpression: '@weekly')
+    }
   },
 )
