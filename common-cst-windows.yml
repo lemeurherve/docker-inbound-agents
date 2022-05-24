@@ -20,7 +20,7 @@ fileExistenceTests:
     shouldExist: true
     isExecutableBy: 'any'
   - name: 'Git'
-    path: 'C:/mingit/mingw64/git.exe'
+    path: 'C:/mingit/mingw64/bin/git.exe'
     shouldExist: true
     isExecutableBy: 'any'
 
