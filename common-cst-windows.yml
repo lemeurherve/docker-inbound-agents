@@ -13,14 +13,14 @@ fileExistenceTests:
     path: 'C:/ProgramData/Jenkins/agent.jar'
     shouldExist: true
   - name: "Default user's home"
-    path: 'C:/Jenkins/'
+    path: 'C:/Jenkins'
     shouldExist: true
   - name: 'cmd'
     path: 'C:/Windows/System32/cmd.exe'
     shouldExist: true
     isExecutableBy: 'any'
   - name: 'Git'
-    path: 'C:\tools\git.exe'
+    path: 'C:/tools/git.exe'
     shouldExist: true
     isExecutableBy: 'any'
 
