@@ -23,9 +23,3 @@ fileExistenceTests:
     path: 'C:/mingit/mingw64/bin/git.exe'
     shouldExist: true
     isExecutableBy: 'any'
-
-
-# fileContentTests:
-#   - name: 'Default user exists with the correct non-root UID/GID'
-#     path: '/etc/passwd'
-#     expectedContents: ['.*jenkins:x:100\d:100\d.*']
