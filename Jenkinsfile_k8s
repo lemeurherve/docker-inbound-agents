@@ -1,3 +1,5 @@
+@Library('pipeline-library@pull/849/head') _
+
 properties([buildDiscarder(logRotator(daysToKeepStr: '15'))])
 
 parallel(
@@ -6,7 +8,7 @@ parallel(
     buildDockerAndPublishImage('inbound-agent-maven:jdk8-nanoserver', [
       dockerfile: 'maven/jdk8/Dockerfile.nanoserver',
       agentLabels: 'docker-windows-2019 && amd64',
-      platform: 'windows/amd64',
+      targetplatforms: 'windows/amd64',
       imageDir: 'maven/jdk8',
     ])
   },
@@ -14,14 +16,14 @@ parallel(
     buildDockerAndPublishImage('inbound-agent-maven:jdk11-nanoserver', [
       dockerfile: 'maven/jdk11/Dockerfile.nanoserver',
       agentLabels: 'docker-windows-2019 && amd64',
-      platform: 'windows/amd64',
+      targetplatforms: 'windows/amd64',
     ])
   },
   'maven-jdk17-nanoserver': {
     buildDockerAndPublishImage('inbound-agent-maven:jdk17-nanoserver', [
       dockerfile: 'maven/jdk17/Dockerfile.nanoserver',
       agentLabels: 'docker-windows-2019 && amd64',
-      platform: 'windows/amd64',
+      targetplatforms: 'windows/amd64',
       imageDir: 'maven/jdk17',
     ])
   },
@@ -29,7 +31,7 @@ parallel(
     buildDockerAndPublishImage('inbound-agent-maven:jdk21-nanoserver', [
       dockerfile: 'maven/jdk21/Dockerfile.nanoserver',
       agentLabels: 'docker-windows-2019 && amd64',
-      platform: 'windows/amd64',
+      targetplatforms: 'windows/amd64',
       imageDir: 'maven/jdk21',
     ])
   },
